@@ -1,6 +1,6 @@
 package com.buzzfactory.lwapi.service;
 
-import com.buzzfactory.lwapi.repository.WordNotFoundException;
+import com.buzzfactory.lwapi.repository.EntityNotFoundException;
 import com.buzzfactory.lwapi.repository.WordRepository;
 import com.buzzfactory.lwapi.dto.WordDTO;
 import com.buzzfactory.lwapi.entity.Word;
@@ -44,7 +44,7 @@ public class MongoDBWordService implements WordService {
     }
 
     @Override
-    public WordDTO findById(String id) throws WordNotFoundException {
+    public WordDTO findById(String id) throws EntityNotFoundException {
         LOGGER.info("Finding with entry with id: {}", id);
 
         Word word = findWordById(id);
@@ -57,7 +57,7 @@ public class MongoDBWordService implements WordService {
 
     private Word findWordById(String id) {
         Optional<Word> result = repository.findOne(id);
-        return result.orElseThrow(() -> new WordNotFoundException(id));
+        return result.orElseThrow(() -> new EntityNotFoundException(id));
     }
 
     @Override

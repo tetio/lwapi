@@ -1,7 +1,5 @@
 package com.buzzfactory.lwapi.dto;
 
-import org.springframework.data.annotation.Id;
-
 /**
  * Created by tetio on 17/10/15.
  */
